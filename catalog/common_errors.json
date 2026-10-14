@@ -1,0 +1,383 @@
+[
+  {
+    "code": "E01",
+    "description": "Не предоставлена ИД.",
+    "confirmation": "engineer",
+    "severity": "review",
+    "version": 1,
+    "title": "Не предоставлена ИД",
+    "algorithm": "Отсутствие документов ID в активном комплекте",
+    "required_sources": [
+      "Загруженный комплект ИД"
+    ],
+    "check_type": "preliminary_automatic_with_review"
+  },
+  {
+    "code": "E02",
+    "description": "Не предоставлен приказ на ответственное лицо, выполнившего работы.",
+    "confirmation": "engineer",
+    "severity": "review",
+    "version": 1,
+    "title": "Не предоставлен приказ на ответственное лицо, выполнившего работы",
+    "algorithm": "Требуется разработка правила с эталонными источниками",
+    "required_sources": [],
+    "check_type": "manual_pending_implementation"
+  },
+  {
+    "code": "E03",
+    "description": "Неправильно указан объект капитального строительства.",
+    "confirmation": "engineer",
+    "severity": "review",
+    "version": 1,
+    "title": "Неправильно указан объект капитального строительства",
+    "algorithm": "Требуется разработка правила с эталонными источниками",
+    "required_sources": [],
+    "check_type": "manual_pending_implementation"
+  },
+  {
+    "code": "E04",
+    "description": "Неправильно указано наименование строительной конструкции, подлежащей освидетельствованию (наименование, оси, высотные отметки).",
+    "confirmation": "engineer",
+    "severity": "review",
+    "version": 1,
+    "title": "Неправильно указано наименование строительной конструкции, подлежащей освидетельствованию",
+    "algorithm": "Требуется разработка правила с эталонными источниками",
+    "required_sources": [],
+    "check_type": "manual_pending_implementation"
+  },
+  {
+    "code": "E05",
+    "description": "Сведения в актах указаны неверно, необходимо заполнить строго в соответствии с подстрочником.",
+    "confirmation": "engineer",
+    "severity": "review",
+    "version": 1,
+    "title": "Сведения в актах указаны неверно, необходимо заполнить строго в соответствии с подстрочником",
+    "algorithm": "Требуется разработка правила с эталонными источниками",
+    "required_sources": [],
+    "check_type": "manual_pending_implementation"
+  },
+  {
+    "code": "E06",
+    "description": "Неправильно указаны реквизиты документов (материалов, протоколов испытаний, ПД/РД, приказов, НТД).",
+    "confirmation": "engineer",
+    "severity": "review",
+    "version": 1,
+    "title": "Неправильно указаны реквизиты документов",
+    "algorithm": "Требуется разработка правила с эталонными источниками",
+    "required_sources": [],
+    "check_type": "manual_pending_implementation"
+  },
+  {
+    "code": "E07",
+    "description": "Неправильно указаны наименования исполнительных схем в актах.",
+    "confirmation": "engineer",
+    "severity": "review",
+    "version": 1,
+    "title": "Неправильно указаны наименования исполнительных схем в актах",
+    "algorithm": "Требуется разработка правила с эталонными источниками",
+    "required_sources": [],
+    "check_type": "manual_pending_implementation"
+  },
+  {
+    "code": "E08",
+    "description": "Не заполнены обязательные поля актов.",
+    "confirmation": "engineer",
+    "severity": "review",
+    "version": 1,
+    "title": "Не заполнены обязательные поля актов",
+    "algorithm": "Требуется разработка правила с эталонными источниками",
+    "required_sources": [],
+    "check_type": "manual_pending_implementation"
+  },
+  {
+    "code": "E09",
+    "description": "Даты выполнения работ не соответствуют датам внесенных записей в ОЖР/СЖР.",
+    "confirmation": "engineer",
+    "severity": "review",
+    "version": 1,
+    "title": "Даты выполнения работ не соответствуют датам внесенных записей в ОЖР/СЖР",
+    "algorithm": "Требуется разработка правила с эталонными источниками",
+    "required_sources": [],
+    "check_type": "manual_pending_implementation"
+  },
+  {
+    "code": "E10",
+    "description": "ИД предоставлена не в полном объеме (например, предоставляют только акты, без исполнительных схем или документов качества на материалы).",
+    "confirmation": "engineer",
+    "severity": "review",
+    "version": 1,
+    "title": "ИД предоставлена не в полном объеме",
+    "algorithm": "Требуется разработка правила с эталонными источниками",
+    "required_sources": [],
+    "check_type": "manual_pending_implementation"
+  },
+  {
+    "code": "E11",
+    "description": "ИД оформлена от лица не имеющая права на выполнение данных видов работ (на некоторые виды работ, связанных с пожарной безопасностью необходима, лицензия МЧС)",
+    "confirmation": "engineer",
+    "severity": "review",
+    "version": 1,
+    "title": "ИД оформлена от лица не имеющая права на выполнение данных видов работ",
+    "algorithm": "Требуется разработка правила с эталонными источниками",
+    "required_sources": [],
+    "check_type": "manual_pending_implementation"
+  },
+  {
+    "code": "E12",
+    "description": "Дата формирования акта не соответствует дате протоколов испытаний/приказов (например акт составлен 06.09.26, а протокол, указанный в акте, датируется 09.09.26, или дата составления акта 06.09.26 а приказ на ответственное лицо 09.09.26)",
+    "confirmation": "engineer",
+    "severity": "review",
+    "version": 1,
+    "title": "Дата формирования акта не соответствует дате протоколов испытаний/приказов",
+    "algorithm": "Проверка обнаруженных дат акта и протокола (предварительная, с ручным подтверждением)",
+    "required_sources": [
+      "Акты",
+      "Протоколы испытаний"
+    ],
+    "check_type": "preliminary_automatic_with_review"
+  },
+  {
+    "code": "E13",
+    "description": "Дата формирования акта (АОСР) не соответствует дате окончания работ указанных в п.5.",
+    "confirmation": "engineer",
+    "severity": "review",
+    "version": 1,
+    "title": "Дата формирования акта",
+    "algorithm": "Требуется разработка правила с эталонными источниками",
+    "required_sources": [],
+    "check_type": "manual_pending_implementation"
+  },
+  {
+    "code": "E14",
+    "description": "На исполнительных схемах (ИС) отсутствуют фактические размеры (либо указание величины отклонения от проектного положения).",
+    "confirmation": "engineer",
+    "severity": "review",
+    "version": 1,
+    "title": "На исполнительных схемах",
+    "algorithm": "Требуется разработка правила с эталонными источниками",
+    "required_sources": [],
+    "check_type": "manual_pending_implementation"
+  },
+  {
+    "code": "E15",
+    "description": "Орфографические ошибки (например, допускают ошибки в склонении фамилий).",
+    "confirmation": "engineer",
+    "severity": "review",
+    "version": 1,
+    "title": "Орфографические ошибки",
+    "algorithm": "Не выполняется в первом этапе; перенесено на следующий этап после нормативного контроля",
+    "required_sources": [
+      "Текст документа"
+    ],
+    "check_type": "deferred_manual"
+  },
+  {
+    "code": "E16",
+    "description": "Не корректно заполнен штамп ИС (шифр, наименование, стадия, наименование подрядчика, подписанты.)",
+    "confirmation": "engineer",
+    "severity": "review",
+    "version": 1,
+    "title": "Не корректно заполнен штамп ИС",
+    "algorithm": "Требуется разработка правила с эталонными источниками",
+    "required_sources": [],
+    "check_type": "manual_pending_implementation"
+  },
+  {
+    "code": "E17",
+    "description": "На ИС отсутствуют условные обозначения.",
+    "confirmation": "engineer",
+    "severity": "review",
+    "version": 1,
+    "title": "На ИС отсутствуют условные обозначения",
+    "algorithm": "Требуется разработка правила с эталонными источниками",
+    "required_sources": [],
+    "check_type": "manual_pending_implementation"
+  },
+  {
+    "code": "E18",
+    "description": "ИС оформлена целиком на основании ПД (просто взяли ПД и заменили штамп) и не отображает факт выполненных работ.",
+    "confirmation": "engineer",
+    "severity": "review",
+    "version": 1,
+    "title": "ИС оформлена целиком на основании ПД",
+    "algorithm": "Требуется разработка правила с эталонными источниками",
+    "required_sources": [],
+    "check_type": "manual_pending_implementation"
+  },
+  {
+    "code": "E19",
+    "description": "Конструктив на ИС отображается не в полном объеме.",
+    "confirmation": "engineer",
+    "severity": "review",
+    "version": 1,
+    "title": "Конструктив на ИС отображается не в полном объеме",
+    "algorithm": "Требуется разработка правила с эталонными источниками",
+    "required_sources": [],
+    "check_type": "manual_pending_implementation"
+  },
+  {
+    "code": "E20",
+    "description": "Не соблюдена последовательность работ или неправильно указаны разрешаемые работы (например устройство каркаса перегородок 1 этажа разрешает обшивку каркаса перегородок 1 этажа гипсокартоном, а в акте подрядчика указано, что разрешается устройство каркаса перегородок 2 этажа).",
+    "confirmation": "engineer",
+    "severity": "review",
+    "version": 1,
+    "title": "Не соблюдена последовательность работ или неправильно указаны разрешаемые работы",
+    "algorithm": "Требуется разработка правила с эталонными источниками",
+    "required_sources": [],
+    "check_type": "manual_pending_implementation"
+  },
+  {
+    "code": "E21",
+    "description": "Указан не полный перечень применяемых материалов (например, при устройстве колодцев забывают прописать крышку колодца).",
+    "confirmation": "engineer",
+    "severity": "review",
+    "version": 1,
+    "title": "Указан не полный перечень применяемых материалов",
+    "algorithm": "Требуется разработка правила с эталонными источниками",
+    "required_sources": [],
+    "check_type": "manual_pending_implementation"
+  },
+  {
+    "code": "E22",
+    "description": "Применяется устаревшая форма документа.",
+    "confirmation": "engineer",
+    "severity": "review",
+    "version": 1,
+    "title": "Применяется устаревшая форма документа",
+    "algorithm": "Требуется разработка правила с эталонными источниками",
+    "required_sources": [],
+    "check_type": "manual_pending_implementation"
+  },
+  {
+    "code": "E23",
+    "description": "Неправильно указаны НТД, в соответствии с которым выполнялись работы (например, прописывают СП область применения которого рассчитано только на проектирование, а нам необходим СП область применения которого распространяется на производство монтажных работ и осуществление приемки).",
+    "confirmation": "engineer",
+    "severity": "review",
+    "version": 1,
+    "title": "Неправильно указаны НТД, в соответствии с которым выполнялись работы",
+    "algorithm": "Требуется разработка правила с эталонными источниками",
+    "required_sources": [],
+    "check_type": "manual_pending_implementation"
+  },
+  {
+    "code": "E24",
+    "description": "Отсутствуют протоколы лабораторных испытаний (например протокол определения коэффициента уплотнения грунта).",
+    "confirmation": "engineer",
+    "severity": "review",
+    "version": 1,
+    "title": "Отсутствуют протоколы лабораторных испытаний",
+    "algorithm": "Требуется разработка правила с эталонными источниками",
+    "required_sources": [],
+    "check_type": "manual_pending_implementation"
+  },
+  {
+    "code": "E25",
+    "description": "Неправильно указаны подписанты (например, с 06.09.25 по 06.09.26 по приказу работал человек №1, после он уволился и подписантом с 06.09.26 стал человек №2, но в актах 10.09.26 продолжают указывать человека №1).",
+    "confirmation": "engineer",
+    "severity": "review",
+    "version": 1,
+    "title": "Неправильно указаны подписанты",
+    "algorithm": "Требуется разработка правила с эталонными источниками",
+    "required_sources": [],
+    "check_type": "manual_pending_implementation"
+  },
+  {
+    "code": "E26",
+    "description": "Не обеспечена взаимная увязка документов в составе ИД: сведения в актах, исполнительных схемах, журналах работ, протоколах и документах о качестве материалов не соответствуют друг другу.",
+    "confirmation": "engineer",
+    "severity": "review",
+    "version": 1,
+    "title": "Не обеспечена взаимная увязка документов в составе ИД: сведения в актах, исполнительных схемах, журналах работ",
+    "algorithm": "Требуется разработка правила с эталонными источниками",
+    "required_sources": [],
+    "check_type": "manual_pending_implementation"
+  },
+  {
+    "code": "E27",
+    "description": "Исполнительная схема не позволяет однозначно определить фактическое местоположение выполненных работ.",
+    "confirmation": "engineer",
+    "severity": "review",
+    "version": 1,
+    "title": "Исполнительная схема не позволяет однозначно определить фактическое местоположение выполненных работ",
+    "algorithm": "Требуется разработка правила с эталонными источниками",
+    "required_sources": [],
+    "check_type": "manual_pending_implementation"
+  },
+  {
+    "code": "E28",
+    "description": "Не оформлены акты на отдельные скрытые работы, предусмотренные проектной документацией или технологической последовательностью.",
+    "confirmation": "engineer",
+    "severity": "review",
+    "version": 1,
+    "title": "Не оформлены акты на отдельные скрытые работы, предусмотренные проектной документацией или технологической пос",
+    "algorithm": "Требуется разработка правила с эталонными источниками",
+    "required_sources": [],
+    "check_type": "manual_pending_implementation"
+  },
+  {
+    "code": "E29",
+    "description": "Один акт объединяет работы, которые выполнялись в разные периоды, на разных захватках, этажах, осях или участках, без достаточного обоснования такого объединения.",
+    "confirmation": "engineer",
+    "severity": "review",
+    "version": 1,
+    "title": "Один акт объединяет работы, которые выполнялись в разные периоды, на разных захватках, этажах, осях или участк",
+    "algorithm": "Требуется разработка правила с эталонными источниками",
+    "required_sources": [],
+    "check_type": "manual_pending_implementation"
+  },
+  {
+    "code": "E30",
+    "description": "В одном акте объединены работы, выполненные с применением различных материалов, технологий или по разным проектным решениям, без соответствующего отражения этих различий.",
+    "confirmation": "engineer",
+    "severity": "review",
+    "version": 1,
+    "title": "В одном акте объединены работы, выполненные с применением различных материалов, технологий или по разным проек",
+    "algorithm": "Требуется разработка правила с эталонными источниками",
+    "required_sources": [],
+    "check_type": "manual_pending_implementation"
+  },
+  {
+    "code": "E31",
+    "description": "Срок действия документа о качестве материала истёк на момент его применения.",
+    "confirmation": "engineer",
+    "severity": "review",
+    "version": 1,
+    "title": "Срок действия документа о качестве материала истёк на момент его применения",
+    "algorithm": "Требуется разработка правила с эталонными источниками",
+    "required_sources": [],
+    "check_type": "manual_pending_implementation"
+  },
+  {
+    "code": "E32",
+    "description": "Марка, класс, типоразмер или иные характеристики применённого материала не соответствуют проектным требованиям.",
+    "confirmation": "engineer",
+    "severity": "review",
+    "version": 1,
+    "title": "Марка, класс, типоразмер или иные характеристики применённого материала не соответствуют проектным требованиям",
+    "algorithm": "Требуется разработка правила с эталонными источниками",
+    "required_sources": [],
+    "check_type": "manual_pending_implementation"
+  },
+  {
+    "code": "E33",
+    "description": "Не предоставлены документы о проведении геодезических работ и исполнительной геодезической съёмки, если их выполнение предусмотрено.",
+    "confirmation": "engineer",
+    "severity": "review",
+    "version": 1,
+    "title": "Не предоставлены документы о проведении геодезических работ и исполнительной геодезической съёмки, если их вып",
+    "algorithm": "Требуется разработка правила с эталонными источниками",
+    "required_sources": [],
+    "check_type": "manual_pending_implementation"
+  },
+  {
+    "code": "E34",
+    "description": "Отсутствует реестр ИД или он не соответствует фактически переданному на проверку составу ИД.",
+    "confirmation": "engineer",
+    "severity": "review",
+    "version": 1,
+    "title": "Отсутствует реестр ИД или он не соответствует фактически переданному на проверку составу ИД",
+    "algorithm": "Требуется разработка правила с эталонными источниками",
+    "required_sources": [],
+    "check_type": "manual_pending_implementation"
+  }
+]

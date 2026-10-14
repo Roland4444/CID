@@ -1,0 +1,1255 @@
+[
+  {
+    "name": "Земляные работы",
+    "items": [
+      {
+        "code": "1.1",
+        "title": "Реестр исполнительной документации",
+        "norm_reference": "Настоящая Процедура, Прил. №2",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "1.2",
+        "title": "Акт освидетельствования геодезической разбивочной основы объекта капитального строительства",
+        "norm_reference": "Приказ № 344/пр от 16.05.2023 Министерства строительства и жилищно-коммунального хозяйства РФ, прил. №1",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "1.3",
+        "title": "Акт разбивки осей объекта капитального строительства на местности",
+        "norm_reference": "Приказ № 344/пр от 16.05.2023 Министерства строительства и жилищно-коммунального хозяйства РФ, прил. №2",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "1.4",
+        "title": "Акты освидетельствования скрытых работ",
+        "norm_reference": "Приказ № 344/пр от 16.05.2023 Министерства строительства и жилищно-коммунального хозяйства РФ, прил. №3",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "1.5",
+        "title": "Исполнительные геодезические схемы",
+        "norm_reference": "ГОСТ Р 51872-2024",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "1.6",
+        "title": "Акт приёмки основания",
+        "norm_reference": "СП 45.13330.2017, п.11.39 СП 50-101-2004, п.13.1.13 СП 50-101-2004, п.13.1.14",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "1.7",
+        "title": "Протоколы/ заключения лабораторных испытаний (уплотнение грунта)",
+        "norm_reference": "По форме строительной лаборатории",
+        "required_by_default": false,
+        "requirement": "conditional"
+      }
+    ]
+  },
+  {
+    "name": "Общестроительные работы",
+    "items": [
+      {
+        "code": "2.1",
+        "title": "Реестр исполнительной документации",
+        "norm_reference": "Настоящая Процедура, Прил. №2",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "2.2",
+        "title": "Акт разбивки осей объекта капитального строительства на местности",
+        "norm_reference": "Приказ № 344/пр от 16.05.2023 Министерства строительства и жилищно-коммунального хозяйства РФ, прил. №2",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "2.3",
+        "title": "Акты освидетельствования скрытых работ",
+        "norm_reference": "Приказ № 344/пр от 16.05.2023 Министерства строительства и жилищно-коммунального хозяйства РФ, прил. №3",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "2.4",
+        "title": "Акт освидетельствования строительных конструкций, устранение недостатков в которых невозможно без разборки или повреждения других строительных конструкций, и участков сетей инженерно-технического обеспечения (ответственных конструкций)",
+        "norm_reference": "Приказ № 344/пр от 16.05.2023 Министерства строительства и жилищно-коммунального хозяйства РФ, прил. №3",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "2.5",
+        "title": "Исполнительные геодезические схемы возведенных конструкций, элементов и частей зданий, сооружений, включая деформационные марки",
+        "norm_reference": "ГОСТ Р 51872-2024",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "2.6",
+        "title": "Протоколы/ заключения/ акты лабораторных и иных испытаний",
+        "norm_reference": "По форме строительной лаборатории (или иной организации имеющей право выполнять соответствующие испытания)",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "2.7",
+        "title": "Документ о качестве стальных строительных конструкций",
+        "norm_reference": "ГОСТ 23118-2019 Прил. В",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "2.8",
+        "title": "Акт приёмки защитного покрытия",
+        "norm_reference": "СП 72.13330.2016, прил. Д",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "2.9",
+        "title": "Акты визуального и измерительного контроля",
+        "norm_reference": "Приказ РТН от 16.01.2024 №8, прил. 10 СП 70.13330.2012, п.10.4.3 ГОСТ Р ИСО 17637-2014, п.5",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "2.10",
+        "title": "Заключения по неразрушающему контролю сварных соединений",
+        "norm_reference": "СП 70.13330.2012, п.10.4.3",
+        "required_by_default": false,
+        "requirement": "conditional"
+      }
+    ]
+  },
+  {
+    "name": "Отопление, вентиляция и кондиционирование",
+    "items": [
+      {
+        "code": "3.1",
+        "title": "Реестр исполнительной документации",
+        "norm_reference": "Настоящая Процедура, Прил. №2",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "3.2",
+        "title": "Акт о проведении индивидуального испытания оборудования",
+        "norm_reference": "СП 73.13330.2016, прил. Д",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "3.3",
+        "title": "Паспорт системы вентиляции (системы кондиционирования воздуха)",
+        "norm_reference": "СП 73.13330.2016, прил. Е",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "3.4",
+        "title": "Акты освидетельствования скрытых работ",
+        "norm_reference": "Приказ № 344/пр от 16.05.2023 Министерства строительства и жилищно-коммунального хозяйства РФ, прил. №3",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "3.5",
+        "title": "Акт освидетельствования участков сетей инженерно-технического обеспечения",
+        "norm_reference": "Приказ № 344/пр от 16.05.2023 Министерства строительства и жилищно-коммунального хозяйства РФ, прил. №5",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "3.6",
+        "title": "Исполнительные схемы",
+        "norm_reference": "ГОСТ Р 51872-2024",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "3.7",
+        "title": "Акт о проведении гидростатического или манометрического испытания на герметичность",
+        "norm_reference": "СП 73.13330.2016, прил. В",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "3.8",
+        "title": "Акт промывки (продувки) системы",
+        "norm_reference": "СП 347.1325800.2017, прил. Е",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "3.9",
+        "title": "Акт приемки внутренней системы отопления",
+        "norm_reference": "СП 347.1325800.2017, прил. Г",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "3.10",
+        "title": "Акт приёмки оборудования после индивидуального испытания",
+        "norm_reference": "СП 68.13330.2017, прил. М",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "3.11",
+        "title": "Акт приемки оборудования после комплексного опробования",
+        "norm_reference": "СП 68.13330.2017, прил. Н",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "3.12",
+        "title": "Заключение пусконаладочной организации",
+        "norm_reference": "СП 543.1325800.2024, Прил. А, Таблица А.1, п.95",
+        "required_by_default": false,
+        "requirement": "conditional"
+      }
+    ]
+  },
+  {
+    "name": "Внутренние сети водоснабжения",
+    "items": [
+      {
+        "code": "4.1",
+        "title": "Реестр исполнительной документации",
+        "norm_reference": "Настоящая Процедура, Прил. №2",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "4.2",
+        "title": "Акты освидетельствования скрытых работ",
+        "norm_reference": "Приказ № 344/пр от 16.05.2023 Министерства строительства и жилищно-коммунального хозяйства РФ, прил. №3",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "4.3",
+        "title": "Акт освидетельствования участков сетей инженерно-технического обеспечения",
+        "norm_reference": "Приказ № 344/пр от 16.05.2023 Министерства строительства и жилищно-коммунального хозяйства РФ, прил. №5",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "4.4",
+        "title": "Акт о проведении гидростатического или манометрического испытания на герметичность",
+        "norm_reference": "СП 73.13330.2016, прил. В",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "4.5",
+        "title": "Акт о проведении индивидуального испытания оборудования",
+        "norm_reference": "СП 73.13330.2016, прил. Д",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "4.6",
+        "title": "Акт испытаний внутреннего противопожарного водопровода на водоотдачу",
+        "norm_reference": "ГОСТ Р 59643-2021",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "4.7",
+        "title": "Акт о проведении промывки и дезинфекции трубопроводов (сооружений) хозяйственно-питьевого водоснабжения",
+        "norm_reference": "Свободной формы",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "4.8",
+        "title": "Акт приёмки внутренних систем горячего и холодного водоснабжения",
+        "norm_reference": "СП 347.1325800.2017, прил. Д",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "4.9",
+        "title": "Исполнительные схемы",
+        "norm_reference": "ГОСТ Р 51872-2024",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "4.10",
+        "title": "Заключение о качестве сварных швов (ВИК, неразрушающий контроль) с документами об аттестации лаборатории);",
+        "norm_reference": "По форме строительной лаборатории",
+        "required_by_default": false,
+        "requirement": "conditional"
+      }
+    ]
+  },
+  {
+    "name": "Внутренние сети водоотведения",
+    "items": [
+      {
+        "code": "5.1",
+        "title": "Реестр исполнительной документации",
+        "norm_reference": "Настоящая Процедура, Прил. №2",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "5.2",
+        "title": "Акты освидетельствования скрытых работ",
+        "norm_reference": "Приказ № 344/пр от 16.05.2023 Министерства строительства и жилищно-коммунального хозяйства РФ, прил. №3",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "5.3",
+        "title": "Акт освидетельствования участков сетей инженерно-технического обеспечения",
+        "norm_reference": "Приказ № 344/пр от 16.05.2023 Министерства строительства и жилищно-коммунального хозяйства РФ, прил. №5",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "5.4",
+        "title": "Акт о проведении испытания систем канализации и водостоков",
+        "norm_reference": "СП 73.13330.2016, прил. Г",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "5.5",
+        "title": "Акт о проведении индивидуального испытания оборудования",
+        "norm_reference": "СП 73.13330.2016, прил. Д",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "5.6",
+        "title": "Акт приемки системы и выпусков внутренней канализации",
+        "norm_reference": "СП 543.1325800.2024, Прил. А, Таблица А.1, п.90,",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "5.7",
+        "title": "Исполнительные схемы",
+        "norm_reference": "ГОСТ Р 51872-2024",
+        "required_by_default": false,
+        "requirement": "conditional"
+      }
+    ]
+  },
+  {
+    "name": "Наружные сети водоснабжения",
+    "items": [
+      {
+        "code": "6.1",
+        "title": "Реестр исполнительной документации",
+        "norm_reference": "Настоящая Процедура, Прил. №2",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "6.2",
+        "title": "Акт разбивки осей объекта капитального строительства на местности",
+        "norm_reference": "Приказ № 344/пр от 16.05.2023 Министерства строительства и жилищно-коммунального хозяйства РФ, прил. №2",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "6.3",
+        "title": "Акты освидетельствования скрытых работ",
+        "norm_reference": "Приказ № 344/пр от 16.05.2023 Министерства строительства и жилищно-коммунального хозяйства РФ, прил. №3",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "6.4",
+        "title": "Акт освидетельствования участков сетей инженерно-технического обеспечения",
+        "norm_reference": "Приказ № 344/пр от 16.05.2023 Министерства строительства и жилищно-коммунального хозяйства РФ, прил. №5",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "6.5",
+        "title": "Исполнительные геодезические схемы",
+        "norm_reference": "ГОСТ Р 51872-2024",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "6.6",
+        "title": "Заключение о качестве сварных швов (ВИК, неразрушающий контроль) с документами об аттестации лаборатории);",
+        "norm_reference": "Приказ РТН от 16.01.2024 №8, приложение 10",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "6.7",
+        "title": "Акт о проведении гидравлического испытания напорного трубопровода на прочность и герметичность;",
+        "norm_reference": "СП 129.13330.2019, прил. Б",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "6.8",
+        "title": "Акт о проведении промывки и дезинфекции трубопроводов (сооружений) хозяйственно-питьевого водоснабжения",
+        "norm_reference": "СП 129.13330.2019, прил. Е",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "6.9",
+        "title": "Акт испытания наружного противопожарного водопровода на водоотдачу и работоспособность пожарных гидрантов",
+        "norm_reference": "СП 8.13130.2020",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "6.10",
+        "title": "Акт на ревизию и испытание арматуры (по форме Акта освидетельствования скрытых работ)",
+        "norm_reference": "Приказ № 344/пр от 16.05.2023 Министерства строительства и жилищно-коммунального хозяйства РФ, прил. №3",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "6.11",
+        "title": "Протокол строительной лаборатории (уплотнение грунта)",
+        "norm_reference": "По форме строительной лаборатории",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "6.12",
+        "title": "Заключение санитарно-эпидемиологической службы",
+        "norm_reference": "По форме",
+        "required_by_default": false,
+        "requirement": "conditional"
+      }
+    ]
+  },
+  {
+    "name": "Наружные сети водоотведения",
+    "items": [
+      {
+        "code": "7.1",
+        "title": "Реестр исполнительной документации",
+        "norm_reference": "Настоящая Процедура, Прил. №2",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "7.2",
+        "title": "Акт разбивки осей объекта капитального строительства на местности",
+        "norm_reference": "Приказ № 344/пр от 16.05.2023 Министерства строительства и жилищно-коммунального хозяйства РФ, прил. №2",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "7.3",
+        "title": "Акты освидетельствования скрытых работ",
+        "norm_reference": "Приказ № 344/пр от 16.05.2023 Министерства строительства и жилищно-коммунального хозяйства РФ, прил. №3",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "7.4",
+        "title": "Акт освидетельствования участков сетей инженерно-технического обеспечения",
+        "norm_reference": "Приказ № 344/пр от 16.05.2023 Министерства строительства и жилищно-коммунального хозяйства РФ, прил. №5",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "7.5",
+        "title": "Исполнительные геодезические схемы",
+        "norm_reference": "ГОСТ Р 51872-2024",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "7.6",
+        "title": "Акт о проведении гидравлического испытания безнапорного трубопровода на герметичность;",
+        "norm_reference": "СП 129.13330.2019, прил. Д",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "7.7",
+        "title": "Акт на проверку укладки безнапорных трубопроводов просмотром на свет (по форме Акта освидетельствования скрытых работ);",
+        "norm_reference": "Приказ № 344/пр от 16.05.2023 Министерства строительства и жилищно-коммунального хозяйства РФ, прил. №3",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "7.8",
+        "title": "Акт на ревизию и испытание арматуры (по форме Акта освидетельствования скрытых работ)",
+        "norm_reference": "Приказ № 344/пр от 16.05.2023 Министерства строительства и жилищно-коммунального хозяйства РФ, прил. №3",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "7.9",
+        "title": "Протокол строительной лаборатории (уплотнение грунта)",
+        "norm_reference": "По форме строительной лаборатории",
+        "required_by_default": false,
+        "requirement": "conditional"
+      }
+    ]
+  },
+  {
+    "name": "Внутренние сети электроснабжения/электроосвещения",
+    "items": [
+      {
+        "code": "8.1",
+        "title": "Реестр исполнительной документации",
+        "norm_reference": "Настоящая Процедура, Прил. №2",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "8.2",
+        "title": "Акты освидетельствования скрытых работ",
+        "norm_reference": "Приказ № 344/пр от 16.05.2023 Министерства строительства и жилищно-коммунального хозяйства РФ, прил. №3",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "8.3",
+        "title": "Акт освидетельствования участков сетей инженерно-технического обеспечения",
+        "norm_reference": "Приказ № 344/пр от 16.05.2023 Министерства строительства и жилищно-коммунального хозяйства РФ, прил. №5",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "8.4",
+        "title": "Акт готовности строительной части помещений (сооружений) к производству электромонтажных работ",
+        "norm_reference": "И 1.13-07, Форма 6",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "8.5",
+        "title": "Акт проверки осветительной сети на правильность зажигания внутреннего освещения",
+        "norm_reference": "В свободной форме",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "8.6",
+        "title": "Акт о приемке и монтаже силового трансформатора",
+        "norm_reference": "И 1.13-07, Форма 7",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "8.7",
+        "title": "Акт технической готовности электромонтажных работ",
+        "norm_reference": "И 1.13-07, Форма 2",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "8.8",
+        "title": "Приложение 1 к акту технической готовности Ведомость изменений и отступлений от проекта",
+        "norm_reference": "И 1.13-07, Форма 3",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "8.9",
+        "title": "Приложение 2 к акту технической готовности Ведомость технической документации, предъявляемой при сдаче-приемке электромонтажных работ",
+        "norm_reference": "И 1.13-07, Форма 1",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "8.10",
+        "title": "Приложение 3 к акту технической готовности Ведомость электромонтажных недоделок, не препятствующих комплексному опробыванию",
+        "norm_reference": "И 1.13-07, Форма 4",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "8.11",
+        "title": "Приложение 4 к акту технической готовности Ведомость смонтированного электрооборудования",
+        "norm_reference": "И 1.13-07, Форма 5",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "8.12",
+        "title": "Протокол измерений сопротивления изоляции.",
+        "norm_reference": "По форме электротехнической лаборатории, в составе технического отчета, Приказ Минэнерго России от 12.08.2022 N 811",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "8.13",
+        "title": "Протокол проверки полного сопротивления петля «фаза-ноль»",
+        "norm_reference": "По форме электротехнической лаборатории, в составе технического отчета, Приказ Минэнерго России от 12.08.2022 N 811",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "8.14",
+        "title": "Протокол проверки обеспечения условий срабатывания УЗО",
+        "norm_reference": "По форме электротехнической лаборатории, в составе технического отчета, Приказ Минэнерго России от 12.08.2022 N 811",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "8.15",
+        "title": "Протокол фазировки.",
+        "norm_reference": "По форме электротехнической лаборатории, в составе технического отчета, Приказ Минэнерго России от 12.08.2022 N 811",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "8.16",
+        "title": "Паспорт заземляющего устройства",
+        "norm_reference": "И 1.13-07, Форма 24",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "8.17",
+        "title": "Протокол проверки цепи между заземлителями и заземляемыми элементами (контур заземления)",
+        "norm_reference": "По форме электротехнической лаборатории, в составе технического отчета, Приказ Минэнерго России от 12.08.2022 N 811",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "8.18",
+        "title": "Протокол на измерение сопротивления заземлителя (контур заземления)",
+        "norm_reference": "По форме электротехнической лаборатории, в составе технического отчета, Приказ Минэнерго России от 12.08.2022 N 811",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "8.19",
+        "title": "Ведомость замеров при контрольном разряде аккумуляторной батареи",
+        "norm_reference": "И 1.13-07, Форма 10",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "8.20",
+        "title": "Акт передачи смонтированного оборудования для производства пусконаладочных работ",
+        "norm_reference": "И 1.13-07, Форма 6б",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "8.21",
+        "title": "Акт сдачи-приёмки пусконаладочных работ",
+        "norm_reference": "СП 76.13330.2016, прил. Б",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "8.22",
+        "title": "Исполнительные схемы",
+        "norm_reference": "ГОСТ Р 51872-2024",
+        "required_by_default": false,
+        "requirement": "conditional"
+      }
+    ]
+  },
+  {
+    "name": "Наружные сети электроснабжения/электроосвещения",
+    "items": [
+      {
+        "code": "9.1",
+        "title": "Реестр исполнительной документации",
+        "norm_reference": "Настоящая Процедура, Прил. №2",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "9.2",
+        "title": "Акт разбивки осей объекта капитального строительства на местности",
+        "norm_reference": "Приказ № 344/пр от 16.05.2023 Министерства строительства и жилищно-коммунального хозяйства РФ, прил. №2",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "9.3",
+        "title": "Акты освидетельствования скрытых работ",
+        "norm_reference": "Приказ № 344/пр от 16.05.2023 Министерства строительства и жилищно-коммунального хозяйства РФ, прил. №3",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "9.4",
+        "title": "Акт освидетельствования участков сетей инженерно-технического обеспечения",
+        "norm_reference": "Приказ № 344/пр от 16.05.2023 Министерства строительства и жилищно-коммунального хозяйства РФ, прил. №5",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "9.5",
+        "title": "Акт технической готовности электромонтажных работ",
+        "norm_reference": "И 1.13-07, Форма 2",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "9.6",
+        "title": "Приложение 1 к акту технической готовности Ведомость изменений и отступлений от проекта",
+        "norm_reference": "И 1.13-07, Форма 3",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "9.7",
+        "title": "Приложение 2 к акту технической готовности Ведомость технической документации, предъявляемой при сдаче-приемке электромонтажных работ",
+        "norm_reference": "И 1.13-07, Форма 1",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "9.8",
+        "title": "Приложение 3 к акту технической готовности Ведомость электромонтажных недоделок, не препятствующих комплексному опробыванию",
+        "norm_reference": "И 1.13-07, Форма 4",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "9.10",
+        "title": "Приложение 4 к акту технической готовности Ведомость смонтированного электрооборудования",
+        "norm_reference": "И 1.13-07, Форма 5",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "9.11",
+        "title": "Протокол осмотра и проверки сопротивления изоляции проводок, кабелей перед прокладкой;",
+        "norm_reference": "И 1.13-07, Форма 15",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "9.12",
+        "title": "Протокол прогрева кабелей перед прокладкой при низких температурах;",
+        "norm_reference": "И 1.13-07, Форма 16",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "9.13",
+        "title": "Журнал прокладки кабелей;",
+        "norm_reference": "И 1.13-07, Форма 18",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "9.14",
+        "title": "Журнал разделки кабельных муфт;",
+        "norm_reference": "И 1.13-07, Форма 19",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "9.15",
+        "title": "Паспорт заземляющего устройства",
+        "norm_reference": "И 1.13-07, Форма 24",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "9.16",
+        "title": "Акт приемки траншей, каналов, туннелей и блоков под монтаж кабелей",
+        "norm_reference": "И 1.13-07, Форма 14а",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "9.17",
+        "title": "Акт осмотра кабельной канализации в траншеях и каналах перед закрытием",
+        "norm_reference": "И 1.13-07, Форма 17",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "9.18",
+        "title": "Протокол измерений сопротивления изоляции.",
+        "norm_reference": "По форме электротехнической лаборатории, в составе технического отчета, Приказ Минэнерго России от 12.08.2022 N 811",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "9.19",
+        "title": "Протокол проверки полного сопротивления петля «фаза-ноль»",
+        "norm_reference": "По форме электротехнической лаборатории, в составе технического отчета, Приказ Минэнерго России от 12.08.2022 N 811",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "9.20",
+        "title": "Протокол проверки обеспечения условий срабатывания УЗО",
+        "norm_reference": "По форме электротехнической лаборатории, в составе технического отчета, Приказ Минэнерго России от 12.08.2022 N 811",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "9.21",
+        "title": "Протокол фазировки.",
+        "norm_reference": "По форме электротехнической лаборатории, в составе технического отчета, Приказ Минэнерго России от 12.08.2022 N 811",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "9.22",
+        "title": "Протокол на измерение сопротивления заземлителя;",
+        "norm_reference": "По форме электротехнической лаборатории, в составе технического отчета, Приказ Минэнерго России от 12.08.2022 N 811",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "9.23",
+        "title": "Протокол определения коэффициента уплотнения грунта обратной засыпки;",
+        "norm_reference": "По форме строительной лаборатории",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "9.24",
+        "title": "Исполнительные геодезические схемы",
+        "norm_reference": "ГОСТ Р 51872-2024",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "9.25",
+        "title": "Акт готовности монолитного бетонного фундамента под опору ВЛ",
+        "norm_reference": "И 1.13-07, Форма 20",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "9.26",
+        "title": "Акт готовности сборных железобетонных фундаментов под установку опор ВЛ",
+        "norm_reference": "И 1.13-07, Форма 21",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "9.27",
+        "title": "Паспорт воздушной линии электропередачи",
+        "norm_reference": "И 1.13-07, Форма 22",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "9.28",
+        "title": "Акт замеров в натуре габаритов от проводов ВЛ до пересекаемого объекта",
+        "norm_reference": "И 1.13-07, Форма 23",
+        "required_by_default": false,
+        "requirement": "conditional"
+      }
+    ]
+  },
+  {
+    "name": "Пожарная сигнализация",
+    "items": [
+      {
+        "code": "10.1",
+        "title": "Реестр исполнительной документации",
+        "norm_reference": "Настоящая Процедура, Прил. №2",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "10.2",
+        "title": "Акты освидетельствования скрытых работ",
+        "norm_reference": "Приказ № 344/пр от 16.05.2023 Министерства строительства и жилищно-коммунального хозяйства РФ, прил. №3",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "10.3",
+        "title": "Акт освидетельствования участков сетей инженерно-технического обеспечения",
+        "norm_reference": "Приказ № 344/пр от 16.05.2023 Министерства строительства и жилищно-коммунального хозяйства РФ, прил. №5",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "10.4",
+        "title": "Акт о проведении входного контроля технических средств и материалов",
+        "norm_reference": "ГОСТ Р 59638-2021, прил. А",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "10.5",
+        "title": "Акт готовности зданий, сооружений к производству монтажных работ",
+        "norm_reference": "СП 77.13330.2016, прил. А.2",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "10.6",
+        "title": "Акт окончания работ по монтажу систем автоматизации",
+        "norm_reference": "СП 77.13330.2016, прил. А.5 ГОСТ Р 59638-2021, п.5.4.16",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "10.7",
+        "title": "Ведомость смонтированных ПКП (СПУ) и извещателей (по форме Ведомости смонтированных технических средств автоматизации)",
+        "norm_reference": "СП 77.13330.2016, приложение А.21",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "10.8",
+        "title": "Акт комплексных испытаний на работоспособность СПС",
+        "norm_reference": "ГОСТ Р 59638-2021, прил. В",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "10.9",
+        "title": "Акт о приёмке технических средств сигнализации в эксплуатацию",
+        "norm_reference": "СП 77.13330.2016, прил. А.23 ГОСТ Р 59638-2021, п.6.2.4",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "10.10",
+        "title": "Исполнительные схемы",
+        "norm_reference": "ГОСТ Р 51872-2024",
+        "required_by_default": false,
+        "requirement": "conditional"
+      }
+    ]
+  },
+  {
+    "name": "Система автоматизации",
+    "items": [
+      {
+        "code": "11.1",
+        "title": "Реестр исполнительной документации",
+        "norm_reference": "Настоящая Процедура, Прил. №2",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "11.2",
+        "title": "Акт передачи рабочей документации для производства работ по монтажу систем автоматизации",
+        "norm_reference": "СП 77.13330.2016, прил. А.1",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "11.3",
+        "title": "Акт готовности объекта к производству работ по монтажу систем автоматизации",
+        "norm_reference": "СП 77.13330.2016, прил. А.2",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "11.4",
+        "title": "Акт передачи технических средств систем автоматизации в монтаж",
+        "norm_reference": "СП 77.13330.2016, прил. А.3",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "11.5",
+        "title": "Разрешение на монтаж технических средств автоматизации",
+        "norm_reference": "СП 77.13330.2016, прил. А.20",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "11.6",
+        "title": "Протокол прогрева кабелей на барабанах (при прокладке кабеля при низких температурах)",
+        "norm_reference": "СП 77.13330.2016, прил. А.17",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "11.7",
+        "title": "Акты освидетельствования скрытых работ",
+        "norm_reference": "Приказ № 344/пр от 16.05.2023 Министерства строительства и жилищно-коммунального хозяйства РФ, прил. №3",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "11.8",
+        "title": "Акт освидетельствования участков сетей инженерно-технического обеспечения",
+        "norm_reference": "Приказ № 344/пр от 16.05.2023 Министерства строительства и жилищно-коммунального хозяйства РФ, прил. №5",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "11.9",
+        "title": "Протокол измерения сопротивления изоляции",
+        "norm_reference": "СП 77.13330.2016, прил. А.16",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "11.10",
+        "title": "Ведомость смонтированных технических средств автоматизации",
+        "norm_reference": "СП 77.13330.2016, прил. А.21",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "11.11",
+        "title": "Акт окончания работ по монтажу систем автоматизации",
+        "norm_reference": "СП 77.13330.2016, прил. А.5",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "11.12",
+        "title": "Акт приёмки в эксплуатацию отдельных систем автоматизации",
+        "norm_reference": "СП 77.13330.2016, прил. А.22",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "11.13",
+        "title": "Акт приёмки систем автоматизации в эксплуатацию",
+        "norm_reference": "СП 77.13330.2016, прил. А.23",
+        "required_by_default": false,
+        "requirement": "conditional"
+      }
+    ]
+  },
+  {
+    "name": "Сети связи",
+    "items": [
+      {
+        "code": "12.1",
+        "title": "Реестр исполнительной документации",
+        "norm_reference": "Настоящая Процедура, Прил. №2",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "12.2",
+        "title": "Акт разбивки осей объекта капитального строительства на местности",
+        "norm_reference": "Приказ № 344/пр от 16.05.2023 Министерства строительства и жилищно-коммунального хозяйства РФ, прил. №2",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "12.3",
+        "title": "Акты освидетельствования скрытых работ",
+        "norm_reference": "Приказ № 344/пр от 16.05.2023 Министерства строительства и жилищно-коммунального хозяйства РФ, прил. №3",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "12.4",
+        "title": "Акт освидетельствования участков сетей инженерно-технического обеспечения",
+        "norm_reference": "Приказ № 344/пр от 16.05.2023 Министерства строительства и жилищно-коммунального хозяйства РФ, прил. №5",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "12.5",
+        "title": "Ведомость изменений и отступлений от проекта",
+        "norm_reference": "СП 520.1325800.2023, прил. А",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "12.6",
+        "title": "Акт передачи рабочей документации для производства работ по монтажу систем электросвязи",
+        "norm_reference": "СП 520.1325800.2023, прил. Б",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "12.7",
+        "title": "Акт готовности объекта к производству работ по монтажу систем электросвязи",
+        "norm_reference": "СП 520.1325800.2023, прил. В",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "12.8",
+        "title": "Протокол испытания линии на основе витой пары медных проводников",
+        "norm_reference": "СП 520.1325800.2023, прил. Г",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "12.9",
+        "title": "Протокол испытания волоконно-оптической линии",
+        "norm_reference": "СП 520.1325800.2023, прил. Д",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "12.10",
+        "title": "Акт завершения работ по монтажу систем электросвязи",
+        "norm_reference": "СП 520.1325800.2023, прил. Е",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "12.11",
+        "title": "Ведомость смонтированных технических средств систем электросвязи (по форме Ведомости смонтированных технических средств автоматизации)",
+        "norm_reference": "СП 77.13330.2016, прил. А.21",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "12.12",
+        "title": "Программа пусконаладочных работ (свободная форма)",
+        "norm_reference": "СП 520.1325800.2023, п.7.6",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "12.13",
+        "title": "Акт приёмки пусконаладочных работ системы",
+        "norm_reference": "СП 520.1325800.2023, прил. Ж",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "12.14",
+        "title": "Протокол проведения ПНР (свободная форма)",
+        "norm_reference": "СП 520.1325800.2023, п.7.10",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "12.15",
+        "title": "Приказ о назначении приёмочной комиссии (свободная форма)",
+        "norm_reference": "СП 520.1325800.2023, п.8.4",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "12.16",
+        "title": "Программа комплексных испытаний с планом-графиком проведения работ (свободная форма)",
+        "norm_reference": "СП 520.1325800.2023, п.8.8",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "12.17",
+        "title": "Акт о проведении автономных испытаний системы",
+        "norm_reference": "СП 520.1325800.2023, приложение И",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "12.18",
+        "title": "Протокол проведения автономных испытаний (свободная форма)",
+        "norm_reference": "СП 520.1325800.2023, п.8.11",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "12.19",
+        "title": "Исполнительные схемы",
+        "norm_reference": "ГОСТ Р 51872-2024",
+        "required_by_default": false,
+        "requirement": "conditional"
+      }
+    ]
+  },
+  {
+    "name": "Отделочные работы",
+    "items": [
+      {
+        "code": "13.1",
+        "title": "Реестр исполнительной документации",
+        "norm_reference": "Настоящая Процедура, Прил. №2",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "13.2",
+        "title": "Акты освидетельствования скрытых работ",
+        "norm_reference": "Приказ № 344/пр от 16.05.2023 Министерства строительства и жилищно-коммунального хозяйства РФ, прил. №3",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "13.3",
+        "title": "Акт приёмки выполненных работ",
+        "norm_reference": "СП 71.13330.2017, прил. Г",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "13.4",
+        "title": "Исполнительные схемы",
+        "norm_reference": "ГОСТ Р 51872-2024",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "13.5",
+        "title": "Заключение санитарно-эпидемиологической службы",
+        "norm_reference": "",
+        "required_by_default": false,
+        "requirement": "conditional"
+      }
+    ]
+  },
+  {
+    "name": "Благоустройство территории и устройство дорожных покрытий",
+    "items": [
+      {
+        "code": "14.1",
+        "title": "Реестр исполнительной документации",
+        "norm_reference": "Настоящая Процедура, Прил. №2",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "14.2",
+        "title": "Акты освидетельствования скрытых работ",
+        "norm_reference": "Приказ № 344/пр от 16.05.2023 Министерства строительства и жилищно-коммунального хозяйства РФ, прил. №3",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "14.3",
+        "title": "Протоколы испытания грунтов (уплотнение грунта)",
+        "norm_reference": "По форме строительной лаборатории",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "14.4",
+        "title": "Исполнительные схемы",
+        "norm_reference": "ГОСТ Р 51872-2024",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "14.5",
+        "title": "Документ о качестве асфальтобетонной смеси",
+        "norm_reference": "ГОСТ 9128-2013, п.6.9",
+        "required_by_default": false,
+        "requirement": "conditional"
+      },
+      {
+        "code": "14.6",
+        "title": "Протокол испытаний асфальтобетонной смеси",
+        "norm_reference": "По форме лаборатории СП 78.13330.2012, п.16.3",
+        "required_by_default": false,
+        "requirement": "conditional"
+      }
+    ]
+  }
+]
