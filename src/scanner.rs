@@ -1,22 +1,20 @@
-use crate::{catalog::Catalog, config::{Config,mount_available}, docs, engine, repo};
+use crate::{catalog::Catalog, config::Config, docs, engine, repo, synology::SynologyClient};
 use anyhow::{bail, Context, Result};
 use sha2::{Digest,Sha256};
 use sqlx::PgPool;
-use std::{collections::HashSet,fs::{self,File},io::Read,path::{Path,PathBuf},time::Duration};
+use std::{collections::HashSet,fs::{self,File},io::Read,path::Path,time::{SystemTime,UNIX_EPOCH}};
 use tracing::{info,warn};
 
-#[derive(Clone,Debug)]
-struct Entry {path:PathBuf,project:String,work:String,kind:String,relative:String,ready:bool}
-
 fn source_details(root:&Path,path:&Path)->Option<(String,String,String,String)>{
-    let comps:Vec<String>=path.strip_prefix(root).ok()?.components().map(|c|c.as_os_str().to_string_lossy().into_owned()).collect();
+    let comps:Vec<String>=path.strip_prefix(root).ok()?.components()
+        .map(|c|c.as_os_str().to_string_lossy().into_owned()).collect();
     if comps.len()<4{return None;}
     let kind=match comps[2].to_lowercase().as_str(){
         "id"|"ид"|"исполнительная документация"=>"ID",
         "reference"|"эталон"|"пд-рд"|"пд_рд"|"pd_rd"=>"REFERENCE",
         _=>return None
     };
-    if repo::validate_segment(&comps[0]).is_err()||repo::validate_segment(&comps[1]).is_err(){return None;}
+    if comps.iter().any(|c|repo::validate_segment(c).is_err()) {return None;}
     Some((comps[0].clone(),comps[1].clone(),kind.into(),comps[2..].join("/")))
 }
 fn sha256(path:&Path)->Result<String>{
@@ -24,28 +22,9 @@ fn sha256(path:&Path)->Result<String>{
     loop{let n=file.read(&mut buf)?;if n==0{break;}hasher.update(&buf[..n]);}
     Ok(hex::encode(hasher.finalize()))
 }
-fn collect(cfg:&Config)->Result<Vec<Entry>>{
-    let mut out=Vec::new();
-    for e in walkdir::WalkDir::new(&cfg.watch_root).follow_links(false) {
-        let entry=match e {Ok(e)=>e,Err(e)=>{return Err(anyhow::anyhow!("NAS directory scan was incomplete; skipping deletion detection: {e}"));}};
-        if !entry.file_type().is_file() || entry.file_type().is_symlink(){continue;}
-        let path=entry.path();
-        if !docs::supported(path) || path.file_name().is_some_and(|n|n.to_string_lossy().starts_with('.')){continue;}
-        let name=path.file_name().unwrap_or_default().to_string_lossy();
-        if name.starts_with("~$"){continue;}
-        let Some((project,work,kind,relative))=source_details(&cfg.watch_root,path) else{continue;};
-        let (size,ready)=match entry.metadata(){
-            Ok(m)=>{
-                let elapsed=m.modified().ok().and_then(|t|t.elapsed().ok()).unwrap_or(Duration::ZERO);
-                (m.len(),m.len()<=cfg.max_file_mb*1024*1024 && elapsed>=Duration::from_secs(cfg.stable_seconds))
-            },Err(_)=>(0,false)
-        };
-        let _=size;
-        out.push(Entry{path:path.to_path_buf(),project,work,kind,relative,ready});
-    }
-    Ok(out)
+fn relative_remote_path<'a>(root:&str, full:&'a str)->Option<&'a str>{
+    full.strip_prefix(root)?.strip_prefix('/')
 }
-
 pub async fn ingest(db:&PgPool,cfg:&Config,catalog:&Catalog,root:&Path,path:&Path,origin:&str)->Result<Option<i64>>{
     let Some((project,work,kind,relative))=source_details(root,path) else {return Ok(None)};
     let pr=repo::get_or_create_project(db,&project).await?;
@@ -108,53 +87,96 @@ pub async fn ingest(db:&PgPool,cfg:&Config,catalog:&Catalog,root:&Path,path:&Pat
 }
 
 #[derive(serde::Serialize)]
-pub struct ScanResult {pub mount_available:bool,pub new_documents:usize,pub affected_packages:usize}
-pub async fn scan_once(db:&PgPool,cfg:&Config,catalog:&Catalog)->Result<ScanResult>{
-    if !mount_available(cfg){
-        warn!("Synology mount missing: {}",cfg.watch_root.display());
-        return Ok(ScanResult{mount_available:false,new_documents:0,affected_packages:0});
-    }
-    let c=cfg.clone();
-    let entries=tokio::task::spawn_blocking(move||collect(&c)).await??;
-    // Never interpret an unexpectedly empty share as "all originals deleted".
-    // Real complete removal must be confirmed manually before reconciling the active set.
+pub struct ScanResult {pub synology_connected:bool,pub new_documents:usize,pub affected_packages:usize}
+
+/// A complete successful remote traversal is required before disappearance reconciliation.
+/// Errors in listing, paging, login or decoding never mark documents deleted.
+pub async fn scan_once(db:&PgPool,cfg:&Config,catalog:&Catalog,client:&SynologyClient)->Result<ScanResult>{
+    let session=client.connect().await?;
+    let result=scan_session(db,cfg,catalog,&session).await;
+    session.logout().await;
+    result
+}
+async fn scan_session(
+    db:&PgPool,cfg:&Config,catalog:&Catalog,session:&crate::synology::SynologySession<'_>
+)->Result<ScanResult>{
+    let entries=session.list_files().await?;
     let allow_removals=!entries.is_empty();
     let mut seen=HashSet::new();let mut affected=HashSet::new();let mut ingested=0;
-    for e in entries{
-        seen.insert((e.project.clone(),e.work.clone(),e.relative.clone()));
-        if !e.ready{continue;}
-        match ingest(db,cfg,catalog,&cfg.watch_root,&e.path,"synology").await{
-            Ok(Some(id))=>{affected.insert(id);ingested+=1;},
-            Ok(None)=>{},
-            Err(err)=>warn!("ingest failed {}: {err:#}",e.path.display()),
+    for e in entries {
+        let Some(rel)=relative_remote_path(&cfg.synology_root,&e.path) else {continue};
+        if !crate::docs::supported(Path::new(rel)) ||
+           rel.split('/').last().is_some_and(|n|n.starts_with("~$") || n.starts_with('.')) {continue;}
+        // A temporary local mirror is used ONLY to reuse the tested classification pipeline.
+        // Validate all path segments before creating any directories.
+        let parts:Vec<&str>=rel.split('/').collect();
+        if parts.len()<4 || parts.iter().any(|p|repo::validate_segment(p).is_err()) {continue;}
+        let kind=parts[2].to_lowercase();
+        if !["ид","id","исполнительная документация","reference","эталон","пд-рд","пд_рд","pd_rd"].contains(&kind.as_str()) {continue;}
+        seen.insert((parts[0].to_string(),parts[1].to_string(),parts[2..].join("/")));
+        if e.size>cfg.max_file_mb*1024*1024 {warn!("Ignoring oversized NAS file: {}",e.path);continue;}
+        let now=SystemTime::now().duration_since(UNIX_EPOCH)?.as_secs() as i64;
+        if e.mtime>now || now-e.mtime<cfg.stable_seconds as i64 {continue;}
+        // Avoid repeatedly downloading unchanged files. If an archived document is missing
+        // from the active set, do not trust an old metadata signature.
+        let meta=sqlx::query_as::<_,(i64,i64)>("SELECT size_bytes,modified_epoch FROM synology_file_index WHERE remote_path=$1")
+            .bind(&e.path).fetch_optional(db).await?;
+        let pr=repo::get_or_create_project(db,parts[0]).await?;
+        let pkg=repo::get_or_create_package(db,pr.id,parts[1]).await?;
+        let latest=repo::latest_document(db,pkg.id,&parts[2..].join("/")).await?;
+        if meta.is_some_and(|(s,m)|s==e.size as i64 && m==e.mtime) &&
+           latest.is_some_and(|d|d.is_present && d.origin=="synology") {continue;}
+        // Isolated tempdir prevents read-only NAS files from being modified and leaves no
+        // half-completed temporary scans after the current operation finishes.
+        let tmp=tempfile::tempdir_in(&cfg.data_root)?;
+        let dest=tmp.path().join(rel);
+        fs::create_dir_all(dest.parent().context("Bad relative path")?)?;
+        if let Err(err)=session.download_to(&e.path,&dest,cfg.max_file_mb*1024*1024).await {
+            warn!("Cannot download {}: {err:#}",e.path);
+            continue;
+        }
+        let got=fs::metadata(&dest)?.len();
+        if got!=e.size {warn!("Size changed during Synology download: {} expected={} actual={}",e.path,e.size,got);continue;}
+        match ingest(db,cfg,catalog,tmp.path(),&dest,"synology").await {
+            Ok(updated)=>{
+                if let Some(id)=updated {affected.insert(id);ingested+=1;}
+                sqlx::query("INSERT INTO synology_file_index(remote_path,size_bytes,modified_epoch) VALUES ($1,$2,$3) ON CONFLICT(remote_path) DO UPDATE SET size_bytes=EXCLUDED.size_bytes,modified_epoch=EXCLUDED.modified_epoch,scanned_at=now()")
+                    .bind(&e.path).bind(e.size as i64).bind(e.mtime).execute(db).await?;
+            },
+            Err(err)=>warn!("Failed to analyze Synology file {}: {err:#}",e.path)
         }
     }
-    // Only mark deletions when the share itself is confirmed mounted.
-    if !allow_removals {
-        warn!("Share produced no supported files; avoiding bulk disappearance updates");
-    }
-    let all=if allow_removals {sqlx::query_as::<_,(i64,String,String,String,bool)>("SELECT d.id,p.name,k.name,d.relative_path,d.is_present FROM documents d JOIN packages k ON k.id=d.package_id JOIN projects p ON p.id=k.project_id WHERE d.origin='synology' AND d.id=(SELECT max(d2.id) FROM documents d2 WHERE d2.package_id=d.package_id AND d2.relative_path=d.relative_path) ORDER BY d.id DESC")
-        .fetch_all(db).await?}else{Vec::new()};
-    for (id,pr,work,rel,present) in all{
-        if present && !seen.contains(&(pr.clone(),work.clone(),rel.clone())){
-            let pkgid:(i64,)=sqlx::query_as("UPDATE documents SET is_present=false WHERE id=$1 RETURNING package_id")
-                .bind(id).fetch_one(db).await?;
-            affected.insert(pkgid.0);
-            repo::audit(db,"scanner","file_removed",&format!("{pr}/{work}/{rel}")).await?;
+    // Never interpret an empty NAS folder as deletion of every active document.
+    if !allow_removals {warn!("No files reported by DSM: bulk disappearance reconciliation skipped");}
+    if allow_removals {
+        let all=sqlx::query_as::<_,(i64,String,String,String,bool)>("SELECT d.id,p.name,k.name,d.relative_path,d.is_present FROM documents d JOIN packages k ON k.id=d.package_id JOIN projects p ON p.id=k.project_id WHERE d.origin='synology' AND d.id=(SELECT max(d2.id) FROM documents d2 WHERE d2.package_id=d.package_id AND d2.relative_path=d.relative_path) ORDER BY d.id DESC")
+            .fetch_all(db).await?;
+        for (id,pr,work,rel,present) in all {
+            if present && !seen.contains(&(pr.clone(),work.clone(),rel.clone())) {
+                let pkgid:(i64,)=sqlx::query_as("UPDATE documents SET is_present=false WHERE id=$1 RETURNING package_id")
+                    .bind(id).fetch_one(db).await?;
+                affected.insert(pkgid.0);
+                repo::audit(db,"scanner","nas_file_missing",&format!("{pr}/{work}/{rel}")).await?;
+            }
         }
     }
     for id in &affected {engine::analyze(db,catalog,*id,"synology").await?;}
-    info!("scan complete: {ingested} new, {} packages",affected.len());
-    Ok(ScanResult{mount_available:true,new_documents:ingested,affected_packages:affected.len()})
+    info!("Synology scan: {ingested} new/updated docs, {} affected packages",affected.len());
+    Ok(ScanResult{synology_connected:true,new_documents:ingested,affected_packages:affected.len()})
 }
 
 #[cfg(test)]
-mod tests{
+mod tests {
     use super::*;
-    #[test]fn paths(){
+    #[test] fn paths() {
         let root=Path::new("/nas");
         let d=source_details(root,Path::new("/nas/ЖК/Земляные работы/ИД/акт.docx")).unwrap();
         assert_eq!(d.2,"ID"); assert_eq!(d.3,"ИД/акт.docx");
         assert!(source_details(root,Path::new("/nas/ЖК/непонятно/акт.docx")).is_none());
+        assert!(source_details(root,Path::new("/nas/ЖК/Вид/ИД/../escape.pdf")).is_none());
+    }
+    #[test] fn remote_prefix(){
+        assert_eq!(relative_remote_path("/resdata/ИД","/resdata/ИД/ЖК/Работы/ИД/а.pdf"),Some("ЖК/Работы/ИД/а.pdf"));
+        assert_eq!(relative_remote_path("/resdata/ИД","/resdata/ИД2/x"),None);
     }
 }

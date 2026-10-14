@@ -1,70 +1,13 @@
-# Быстрый запуск: Rust/Axum + PostgreSQL + Synology
+# Краткая настройка — Ubuntu + PostgreSQL + Synology HTTPS
 
-## 1. Подготовка Linux
+1. Установите пакеты: `sudo apt install -y postgresql postgresql-client poppler-utils tesseract-ocr tesseract-ocr-rus tesseract-ocr-eng libreoffice-writer build-essential pkg-config libssl-dev ca-certificates`.
+2. Выполните `sudo -u postgres psql`, затем `CREATE ROLE idcontrol WITH LOGIN;`, `\password idcontrol`, `CREATE DATABASE idcontrol OWNER idcontrol;`, `\q`.
+3. Установите Rust/cargo, убедитесь, что сервер Ubuntu видит по сети Synology HTTPS `5001`, а пользователь NAS имеет права чтения папки через File Station.
+4. `cp .env.example .env` и заполните `DATABASE_URL=postgresql://idcontrol:пароль@127.0.0.1:5432/idcontrol`, `APP_PASSWORD`, `SYNOLOGY_URL=https://...:5001`, `SYNOLOGY_USERNAME`, `SYNOLOGY_PASSWORD`, `SYNOLOGY_ROOT=/имя_шары/папка`.
+5. `cargo check && cargo test && cargo build --release`.
+6. `./target/release/id-control-axum --check-synology` — проверка DSM без подключения БД; затем `./target/release/id-control-axum` — запуск с PostgreSQL.
+7. Для фонового запуска перенесите бинарник в `/opt/id-control-axum/`, установите `deploy/id-control-axum.service` и положите конфиг в `/etc/id-control-axum.env` с правами `600`.
 
-Рекомендуется Debian 12+ или Ubuntu Server. Размещать на VPS и выдавать публичный IP не требуется. Внутреннее приложение можно открыть сотрудникам через локальный HTTPS-адрес; для удалённых сотрудников используйте VPN.
+Полная инструкция с точными командами и диагностикой — **`INSTALL_UBUNTU_RU.md`**.
 
-```bash
-sudo apt update
-sudo apt install -y postgresql postgresql-client build-essential pkg-config libssl-dev \
-  cifs-utils poppler-utils tesseract-ocr tesseract-ocr-rus tesseract-ocr-eng \
-  libreoffice-writer fonts-dejavu-core nginx
-# Установите Rust toolchain, если его нет:
-rustc --version
-cargo --version
-```
-
-## 2. PostgreSQL
-
-Создайте пользователя `idcontrol` и базу данных `idcontrol` с вашим собственным паролем. Пример команд приведён в `README.md`. Не используйте примеры паролей в рабочей системе.
-
-## 3. Synology (доступ на чтение)
-
-Организуйте SMB-доступ с правами только чтения и смонтируйте шару на `/mnt/synology/id`. Корневая папка должна иметь структуру:
-
-```text
-/mnt/synology/id/
-  ЖК Северный/
-    Земляные работы/
-      ИД/
-        АОСР №15.docx
-      ПД-РД/
-        Проект.pdf
-```
-
-Третья папка должна называться `ИД` или `ПД-РД` (также поддерживаются некоторые технические алиасы). Если файлы лежат иначе, измените `source_details` в `src/scanner.rs`.
-
-## 4. Конфигурация
-
-```bash
-cd id-control-axum
-cp .env.example .env
-nano .env
-# Укажите DATABASE_URL, WATCH_ROOT, DATA_ROOT и APP_PASSWORD.
-```
-
-`APP_PASSWORD` должен содержать минимум 16 символов, а `WATCH_ROOT` по умолчанию должен указывать на точку монтирования SMB. По умолчанию веб-сервер доступен только на `127.0.0.1:8090`.
-
-## 5. Сборка и тестирование
-
-```bash
-cargo fmt --all
-cargo check
-cargo test
-cargo build --release
-cargo run --release
-```
-
-На том же сервере откройте `http://127.0.0.1:8090` (через HTTPS-прокси для других компьютеров). Используйте логин/пароль из `.env`.
-
-## 6. Первое использование
-
-1. Добавьте файлы в соответствующие папки Synology.
-2. Приложение просканирует NAS автоматически (интервал в `.env`), создаст проекты **в своей базе PostgreSQL, не в Битрикс24**.
-3. В веб-интерфейсе выберите для комплекта обязательные виды документов.
-4. В `/norms` внесите проверенные требования ГОСТ/СП/приказов, укажите редакцию, пункт и источник, затем утвердите. Без утверждённых правил автоматический ГОСТ-контроль не считается выполненным.
-5. Повторно запустите проверку, рассмотрите замечания, выгрузите XLSX/DOCX/PDF.
-
-## 7. Для запуска в качестве службы
-
-Используйте `deploy/id-control-axum.service` и `deploy/nginx.conf`, заменив пути и внутреннее доменное имя. На производственном сервере добавьте резервное копирование, роли, HTTPS и контроль доступа по объектам. Пример конфигурации — стартовая заготовка, а не готовый безопасный промышленный периметр.
+**Примечание:** исходники ещё не прошли сборку в данной среде (нет Rust toolchain). Инженерные проверки ГОСТ требуют утверждённых нормативных правил и не заменяют проверку специалиста.

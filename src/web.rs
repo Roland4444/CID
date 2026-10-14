@@ -1,4 +1,4 @@
-use crate::{catalog::Catalog,config::{Config,mount_available},engine,models::{Finding,Package},norms,repo,reports,scanner};
+use crate::{catalog::Catalog,config::Config,engine,models::{Finding,Package},norms,repo,reports,scanner};
 use anyhow::Result;
 use axum::{
     body::{Body,Bytes},
@@ -11,13 +11,14 @@ use axum::{
 use base64::Engine;
 use serde::Deserialize;
 use sqlx::PgPool;
-use std::{collections::{HashMap,HashSet},io::Write,path::PathBuf,sync::Arc};
+use std::{collections::{HashMap,HashSet},io::Write,path::PathBuf,sync::{Arc,atomic::{AtomicBool,Ordering}}};
 use subtle::ConstantTimeEq;
 use tokio::sync::Mutex;
 use tracing::error;
 
 pub struct AppState {
     pub cfg:Config, pub db:PgPool, pub catalog:Catalog,
+    pub nas:crate::synology::SynologyClient, pub synology_connected:AtomicBool,
     pub scan_lock:Mutex<()>, pub csrf:String,
 }
 pub type Shared=Arc<AppState>;
@@ -92,8 +93,8 @@ pub fn router(state:Shared)->Router{
 async fn home(State(st):State<Shared>)->WebResult<Html<String>> {
     let projects=sqlx::query_as::<_,crate::models::Project>("SELECT id,name FROM projects ORDER BY name").fetch_all(&st.db).await?;
     let mut body=String::from("<h1>Проекты и комплекты ИД</h1>");
-    if mount_available(&st.cfg) {body.push_str("<p class=ok>Synology: подключена</p>");}
-    else {body.push_str("<p class=warn>Synology: каталог не смонтирован. Удаления не регистрируются.</p>");}
+    if st.synology_connected.load(Ordering::Relaxed) {body.push_str("<p class=ok>Synology HTTPS API: последняя проверка успешна</p>");}
+    else {body.push_str("<p class=warn>Synology HTTPS API: нет успешной проверки соединения. Проверьте журнал systemd.</p>");}
     body.push_str(&format!("<article><h2>Создать проект и комплект</h2><form method=post action=/projects>{}",hidden(&st.csrf)));
     body.push_str("<input name=name placeholder=\"Объект строительства\" required maxlength=300><select name=work_type>");
     for wt in &st.catalog.work_types{body.push_str(&format!("<option value=\"{}\">{}</option>",h(&wt.name),h(&wt.name)));}
@@ -291,7 +292,10 @@ async fn manual_scan(State(st):State<Shared>,Path(id):Path<i64>,Form(form):Form<
     verify(&form.csrf,&st)?;
     let _=repo::package(&st.db,id).await.map_err(|_|WebError::not_found())?;
     let _guard=st.scan_lock.lock().await;
-    scanner::scan_once(&st.db,&st.cfg,&st.catalog).await?;
+    match scanner::scan_once(&st.db,&st.cfg,&st.catalog,&st.nas).await {
+        Ok(_)=>st.synology_connected.store(true,Ordering::Relaxed),
+        Err(e)=>{st.synology_connected.store(false,Ordering::Relaxed);return Err(e.into());}
+    }
     engine::analyze(&st.db,&st.catalog,id,"manual").await?;
     repo::audit(&st.db,&st.cfg.app_user,"manual_scan",&format!("package={id}")).await?;
     Ok(Redirect::to(&format!("/packages/{id}")))
@@ -405,7 +409,7 @@ async fn report(State(st):State<Shared>,Path((id,fmt)):Path<(i64,String)>,Query(
 async fn health(State(st):State<Shared>)->WebResult<Json<serde_json::Value>>{
     let approved:(i64,) = sqlx::query_as("SELECT count(*) FROM normative_rules WHERE approval_status='approved'")
         .fetch_one(&st.db).await?;
-    Ok(Json(serde_json::json!({"mount_available":mount_available(&st.cfg),
+    Ok(Json(serde_json::json!({"synology_connected":st.synology_connected.load(Ordering::Relaxed),
         "approved_normative_rules":approved.0,"normative_rules_configured":approved.0>0,
-        "app_version":"0.4.0"})))
+        "app_version":"0.5.0"})))
 }

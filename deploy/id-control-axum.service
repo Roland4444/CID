@@ -1,7 +1,7 @@
 [Unit]
-Description=ID-Control Rust Axum backend (Synology watcher)
-After=network-online.target postgresql.service mnt-synology-id.mount
+Description=ID Control (Rust Axum / Synology DSM HTTPS API)
 Wants=network-online.target
+After=network-online.target postgresql.service
 
 [Service]
 Type=simple
@@ -9,15 +9,14 @@ User=idcontrol
 Group=idcontrol
 WorkingDirectory=/opt/id-control-axum
 EnvironmentFile=/etc/id-control-axum.env
-ExecStart=/opt/id-control-axum/target/release/id-control-axum
-Restart=always
-RestartSec=5
+ExecStart=/opt/id-control-axum/id-control-axum
+Restart=on-failure
+RestartSec=10
 NoNewPrivileges=true
 PrivateTmp=true
 ProtectSystem=strict
 ProtectHome=true
 ReadWritePaths=/var/lib/id-control
-ReadOnlyPaths=/mnt/synology/id
 UMask=0077
 LimitNOFILE=65535
 
